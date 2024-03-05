@@ -19,9 +19,11 @@ return new class extends Migration
             $table->date("released_at");
             $table->string("country_of_origin");
             $table->string("youtube_trailer_id");
-            $table->string("summary");
+            $table->text("summary");
             $table->string("spoken_in_language");
-            $table->enum("movie/series", ["movie", "series"]);
+            $table->enum("media_type", ["movie", "series"]);
+            $table->date("updated_at");
+            $table->date("created_at");
         });
     }
 

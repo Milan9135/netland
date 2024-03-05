@@ -15,5 +15,11 @@ use Illuminate\Support\Facades\Artisan;
 */
 
 Artisan::command('inspire', function () {
+    $this->comment("here is your quote: ");
     $this->comment(Inspiring::quote());
 })->purpose('Display an inspiring quote');
+
+Artisan::command('balls', function () {
+    $this->comment("here is your balls: ");
+    $this->comment("00");
+})->purpose('Display balls');

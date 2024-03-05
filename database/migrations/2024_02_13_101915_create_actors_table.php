@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string("sex");
             $table->string("country");
             $table->boolean("has_won_awards");
+            $table->date("updated_at");
+            $table->date("created_at");
         });
     }
 

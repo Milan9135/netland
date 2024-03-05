@@ -1,22 +1,27 @@
 <?php
 
-namespace Database\Seeders;
-
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Actor;
+use App\Models\Media;
 
 class DatabaseSeeder extends Seeder
 {
-    /**
-     * Seed the application's database.
-     */
-    public function run(): void
+    public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        // Create 10 actors
+        Actor::factory()->count(1000)->create();
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        // Create 5 media
+        Media::factory()->count(200)->create();
+
+        // Retrieve media and actors from the database
+        $media = Media::all();
+        $actors = Actor::all();
+
+        // Attach actors to media
+        foreach ($media as $medium) {
+            // Attach random actors to each medium
+            $medium->actors()->attach($actors->random(rand(1, 20))->pluck('id')->toArray());
+        }
     }
 }
